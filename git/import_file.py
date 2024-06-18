@@ -38,3 +38,8 @@ def analize_file():
             break
 if __name__ == '__main__':
     analize_file()
+
+
+
+#Посмотрел твой код.
+
