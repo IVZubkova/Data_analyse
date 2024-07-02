@@ -1,7 +1,7 @@
 # Data_analyse
-first study project
+Аеализ таблиц Excel 
 
-Project plan:
-- import file
-- analyze file: find different data
-- make new file with data found
+Что включает в себя работа с файлами:
+- поиск слова или выражения в таблице/вывод строки таблицы с найденным словом/выражением
+- нахождение разницы между двумя таблицами, запись разницы в файл
+- запись найденных слов в файл
