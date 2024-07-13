@@ -7,8 +7,8 @@ def read_file():
 
 def find_diff():
 
-    df1 = pd.read_excel('data_read/kub2.xlsx')
-    df2 = pd.read_excel('data_read/file.xlsx')
+    df1 = pd.read_excel('data_read/Подписка_апрель_2024 (2).xlsx')
+    df2 = pd.read_excel('data_read/Подписка_апрель_2024 (замечания).xlsx')
 
     df1['Контрагент RN'] = df1['Контрагент RN'].fillna(0).astype('int64')
     df2['Контрагент RN'] = df2['Контрагент RN'].fillna(0).astype('int64')
