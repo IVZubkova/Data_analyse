@@ -2,6 +2,23 @@ import pandas as pd
 import openpyxl
 import logging
 
+"""
+    Логирование действий с Excel файлами
+"""
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    filename = 'app.log',
+    filemode = 'w',
+)
+
+def log_function_call(func):
+    def wrapper(*args, **kwargs):
+        logging.info(f"Вызвана функция {func.__name__}")
+        return func(*args, **kwargs)
+    return wrapper
+
+@log_function_call
 def read_file():
     """
     Вывод записей из Excel файла
@@ -10,6 +27,7 @@ def read_file():
     print(df_tires)
 
 
+@log_function_call
 def string_with_found_word():
     """
     Вывод строки с найденным словом
@@ -19,7 +37,7 @@ def string_with_found_word():
     result = df[df.apply(lambda row: row.astype(str).str.contains(search_word, case=False).any(), axis=1)]
     print(result)
 
-
+@log_function_call
 def find_word_in_file():
     """
     Поиск слова в Excel файле, запись найденных слов
@@ -50,6 +68,7 @@ def find_word_in_file():
         print(f'Все найденные слова в файле -- {lines}')
 
 
+@log_function_call
 def find_diff():
     """
     Сравнение файлов и запись различий в отдельный Excel файл
@@ -66,12 +85,9 @@ def find_diff():
 
     not_found.to_excel('различия.xlsx', index=False)
 
-def write_logs():
-    """
-    Логироание действий с Excel файлами
-    """
-    logging.basicConfig(
-        level=logging.INFO
-    )
+
+
 if __name__ == '__main__':
     read_file()
+    string_with_found_word()
+
