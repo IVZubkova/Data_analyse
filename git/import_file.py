@@ -23,17 +23,16 @@ def read_file():
     """
     Вывод записей из Excel файла
     """
-    df_tires = pd.read_excel('data_read/tyres.xlsx')
-    print(df_tires)
+    df = pd.read_excel('data_read/tyres.xlsx')
+    print(df)
 
 
 @log_function_call
-def string_with_found_word():
+def string_with_found_word(search_word = 'Winter'):
     """
     Вывод строки с найденным словом
     """
     df = pd.read_excel('data_read/tyres.xlsx')
-    search_word = 'Winter'
     result = df[df.apply(lambda row: row.astype(str).str.contains(search_word, case=False).any(), axis=1)]
     print(result)
 
@@ -74,8 +73,8 @@ def find_diff():
     Сравнение файлов и запись различий в отдельный Excel файл
     """
 
-    df1 = pd.read_excel('data_read/Подписка_апрель_2024 (2).xlsx')
-    df2 = pd.read_excel('data_read/Подписка_апрель_2024 (замечания).xlsx')
+    df1 = pd.read_excel('data_read/kub.xlsx')
+    df2 = pd.read_excel('data_read/kub2.xlsx')
 
     df1['Контрагент RN'] = df1['Контрагент RN'].fillna(0).astype('int64')
     df2['Контрагент RN'] = df2['Контрагент RN'].fillna(0).astype('int64')
@@ -83,11 +82,10 @@ def find_diff():
     merged = pd.merge(df1, df2, on='Контрагент RN', how='outer', indicator=True)
     not_found = merged[merged['_merge'] != 'both']
 
-    not_found.to_excel('различия.xlsx', index=False)
+    not_found.to_excel('различия_new.xlsx', index=False)
 
 
 
 if __name__ == '__main__':
-    read_file()
-    string_with_found_word()
+    find_diff()
 
