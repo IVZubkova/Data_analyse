@@ -47,7 +47,6 @@ def find_word_in_file():
     word_found = False
 
     file = open('found_words', 'w')
-
     for row in sheet.iter_rows(values_only=True):
         for cell in row:
             if search_word in str(cell):
@@ -72,20 +71,39 @@ def find_diff():
     """
     Сравнение файлов и запись различий в отдельный Excel файл
     """
+    try:
+        df1 = pd.read_excel('data_read/rn_landsail_limits.xlsx')
+        df2 = pd.read_excel('data_read/limits_landsail.xlsx')
+        merged = pd.merge(df1[['RN Контрагент']], df2[['RN Контрагент']], on='RN Контрагент', how='outer', indicator=True)
+        not_found = merged[merged['_merge'] != 'both']
 
-    df1 = pd.read_excel('data_read/kub.xlsx')
-    df2 = pd.read_excel('data_read/kub2.xlsx')
+        not_found.to_excel('различия.xlsx', index=False)
 
-    df1['Контрагент RN'] = df1['Контрагент RN'].fillna(0).astype('int64')
-    df2['Контрагент RN'] = df2['Контрагент RN'].fillna(0).astype('int64')
+        print("Различия успешно записаны в 'различия_new.xlsx'.")
 
-    merged = pd.merge(df1, df2, on='Контрагент RN', how='outer', indicator=True)
-    not_found = merged[merged['_merge'] != 'both']
+    except Exception as e:
+        print(f"Произошла ошибка: {e}")
+@log_function_call
+def find_empty_space():
+    file_path = 'data_read/output.xlsx'
+    df = pd.read_excel(file_path)
+    empty_columns = df.columns[df.isnull().any()]
 
-    not_found.to_excel('различия_new.xlsx', index=False)
+    print("Колонки с пустыми значениями:")
+    for column in empty_columns:
+        print(column)
+@log_function_call
+def find_empty_space():
+    file_path = 'data_read/output.xlsx'
+    df = pd.read_excel(file_path)
+    empty_columns = df.columns[df.isnull().any()]
+    print("Колонки с пустыми значениями:")
+    for column in empty_columns:
+        print(column)
 
 
 
 if __name__ == '__main__':
-    find_diff()
+    find_empty_space()
+
 
