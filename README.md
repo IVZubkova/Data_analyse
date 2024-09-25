@@ -11,4 +11,4 @@
 
 Скриншоты работы кода программы
 <br>
-(https://github.com/IVZubkova/Data_analyse/blob/main/img_1.png)
+![Hello](https://github.com/IVZubkova/Data_analyse/blob/main/img_1.png)
