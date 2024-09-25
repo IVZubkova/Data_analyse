@@ -11,6 +11,8 @@
 
 Скриншоты работы кода программы
 <br>
+Запуск фукнции чтения файла
 ![Hello](https://github.com/IVZubkova/Data_analyse/blob/main/img_1.png)
 <br>
+Запуск функции поиска пустых ячеек
 ![img2](https://github.com/IVZubkova/Data_analyse/blob/main/img_2.png)
