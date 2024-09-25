@@ -10,4 +10,5 @@
 - логирование всех действий с файлами
 
 Скриншоты работы кода программы
-https://github.com/IVZubkova/Data_analyse/blob/main/img_1.png
+<br>
+(https://github.com/IVZubkova/Data_analyse/blob/main/img_1.png)
