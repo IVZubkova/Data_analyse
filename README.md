@@ -12,3 +12,5 @@
 Скриншоты работы кода программы
 <br>
 ![Hello](https://github.com/IVZubkova/Data_analyse/blob/main/img_1.png)
+<br>
+![img2](https://github.com/IVZubkova/Data_analyse/blob/main/img_2.png)
